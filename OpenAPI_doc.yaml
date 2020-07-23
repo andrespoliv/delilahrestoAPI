@@ -1,0 +1,197 @@
+info:
+  title: proyectoapo
+  version: 0.0.1
+  license:
+    name: Proyecto Delilah Restó Acámica
+  description: Un proyecto para realizar pedidos online.
+paths:
+  /:
+    get:
+      summary: /
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  '/usuarios/editar/{id}':
+    post:
+      summary: '/usuarios/editar/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  '/usuarios/eliminar/{id}':
+    delete:
+      summary: '/usuarios/eliminar/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  /usuarios/lista:
+    get:
+      summary: /usuarios/lista
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  /nuevoproducto:
+    post:
+      summary: /nuevoproducto
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  /menu:
+    get:
+      summary: /menu
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  '/menu/{id}':
+    get:
+      summary: '/menu/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  '/eliminarproducto/{id}':
+    delete:
+      summary: '/eliminarproducto/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  '/editar/{id}':
+    post:
+      summary: '/editar/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  /signup:
+    post:
+      summary: /signup
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  /signin:
+    post:
+      summary: /signin
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  /pedidos/nuevo:
+    post:
+      summary: /pedidos/nuevo
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  '/pedidos/usuario/{id}':
+    get:
+      summary: '/pedidos/usuario/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  /pedidos/todos:
+    get:
+      summary: /pedidos/todos
+      consumes:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+  '/pedidos/usuarios/editar/{id}':
+    post:
+      summary: '/pedidos/usuarios/editar/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  '/pedidos/usuarios/eliminar/{id}':
+    delete:
+      summary: '/pedidos/usuarios/eliminar/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+  '/pedidos/estado/{id}':
+    get:
+      summary: '/pedidos/estado/{id}'
+      consumes:
+        - application/json
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+swagger: '2.0'
