@@ -7,7 +7,7 @@ info:
 paths:
   /:
     get:
-      summary: /
+      summary: Test del funcionamiento del servidor
       consumes:
         - application/json
       parameters: []
@@ -16,33 +16,62 @@ paths:
           description: OK
   '/usuarios/editar/{id}':
     post:
-      summary: '/usuarios/editar/{id}'
+      summary: Edición de usuario ya registrado
       consumes:
         - application/json
       parameters:
         - name: id
           type: integer
           in: path
+          description: Número id del usuario a editar
           required: true
+        - name: usuario
+          in: body
+          description: Registro del usuario en la API
+          schema:
+            type: object
+            required:
+              - nombre
+              - apellido
+              - email
+              - telefono
+              - direccion
+            properties:
+              nombre:
+                type: string
+                example: Pablo
+              apellido:
+                type: string
+                example: Picasso
+              email:
+                type: string
+                example: ppicasso@gmail.com
+              telefono:
+                type: string
+                example: '+54355666000'
+              direccion:
+                type: string
+                example: 'Rue des peintreux, 123, Montmartre, Paris'
       responses:
         '200':
           description: OK
   '/usuarios/eliminar/{id}':
     delete:
-      summary: '/usuarios/eliminar/{id}'
+      summary: Remover usuario ya registrado
       consumes:
         - application/json
       parameters:
         - name: id
           type: integer
           in: path
+          description: Número id del usuario a eliminar
           required: true
       responses:
         '200':
           description: OK
   /usuarios/lista:
     get:
-      summary: /usuarios/lista
+      summary: Lista de usuarios registrados en la base de datos
       consumes:
         - application/json
       parameters: []
@@ -51,16 +80,35 @@ paths:
           description: OK
   /nuevoproducto:
     post:
-      summary: /nuevoproducto
+      summary: Ingresar nuevo producto
       consumes:
         - application/json
-      parameters: []
+      parameters:
+        - name: producto
+          in: body
+          description: Registro de producto en la API
+          schema:
+            type: object
+            required:
+              - nombre
+              - precio
+              - descripcion
+            properties:
+              nombre:
+                type: string
+                example: Fondue de queso Emmental
+              precio:
+                type: integer
+                example: '2500'
+              descripcion:
+                type: string
+                example: Delicioso plato de fondue para 2 personas
       responses:
         '200':
           description: OK
   /menu:
     get:
-      summary: /menu
+      summary: Lista de todos los productos registrados
       consumes:
         - application/json
       parameters: []
@@ -69,20 +117,21 @@ paths:
           description: OK
   '/menu/{id}':
     get:
-      summary: '/menu/{id}'
+      summary: Buscar un plato del menú por id
       consumes:
         - application/json
       parameters:
         - name: id
           type: integer
           in: path
+          description: Id del plato a buscar
           required: true
       responses:
         '200':
           description: OK
   '/eliminarproducto/{id}':
     delete:
-      summary: '/eliminarproducto/{id}'
+      summary: Eliminar un plato del menú
       consumes:
         - application/json
       parameters:
@@ -90,52 +139,144 @@ paths:
           type: integer
           in: path
           required: true
+          description: Id del plato a eliminar del menú
       responses:
         '200':
           description: OK
   '/editar/{id}':
     post:
-      summary: '/editar/{id}'
+      summary: Edición de producto según id
       consumes:
         - application/json
       parameters:
         - name: id
           type: integer
           in: path
+          description: Número id del producto a editar
           required: true
+        - name: producto
+          in: body
+          description: Datos del producto a editar
+          schema:
+            type: object
+            required:
+              - nombre
+              - precio
+              - descripcion
+            properties:
+              nombre:
+                type: string
+                example: Fondue de queso Emmental
+              precio:
+                type: integer
+                example: '2500'
+              descripcion:
+                type: string
+                example: Delicioso plato de fondue para 2 personas
       responses:
         '200':
           description: OK
   /signup:
     post:
-      summary: /signup
+      summary: Registro de nuevo usuario
       consumes:
         - application/json
-      parameters: []
+      parameters:
+        - in: body
+          name: usuario
+          description: Registro del usuario en la API
+          schema:
+            type: object
+            required:
+              - usuario
+              - nombre
+              - apellido
+              - email
+              - telefono
+              - direccion
+              - contraseña
+            properties:
+              usuario:
+                type: string
+                example: ppicasso
+              nombre:
+                type: string
+                example: Pablo
+              apellido:
+                type: string
+                example: Picasso
+              email:
+                type: string
+                example: ppicasso@gmail.com
+              telefono:
+                type: string
+                example: '+54355666000'
+              direccion:
+                type: string
+                example: 'Rue des peintreux, 123, Montmartre, Paris'
+              contraseña:
+                type: string
+                format: password
+                example: avignon123
       responses:
         '200':
           description: OK
   /signin:
     post:
-      summary: /signin
+      summary: Inicio de sesión
       consumes:
         - application/json
-      parameters: []
+      parameters:
+        - in: body
+          name: usuario
+          description: Inicio de sesión
+          schema:
+            type: object
+            required:
+              - usuario
+              - contraseña
+            properties:
+              usuario:
+                type: string
+                example: ppicasso
+              contraseña:
+                type: string
+                format: password
+                example: avignon123
       responses:
         '200':
           description: OK
   /pedidos/nuevo:
     post:
-      summary: /pedidos/nuevo
+      summary: Nuevo pedido
       consumes:
         - application/json
-      parameters: []
+      parameters:
+        - in: body
+          name: pedido
+          description: Registrar nuevo pedido
+          schema:
+            type: object
+            required:
+              - producto
+              - cantidad
+              - pago
+            properties:
+              producto:
+                type: string
+                example: Fondue de queso Emmental
+              cantidad:
+                type: integer
+                example: '3'
+              pago:
+                type: string
+                example: 'Efectivo o Débito o Crédito, escoger sólo un método'
       responses:
         '200':
           description: OK
   '/pedidos/usuario/{id}':
     get:
-      summary: '/pedidos/usuario/{id}'
+      summary: Obtener pedido según id
       consumes:
         - application/json
       parameters:
@@ -143,12 +284,13 @@ paths:
           type: integer
           in: path
           required: true
+          description: Id del pedido
       responses:
         '200':
           description: OK
   /pedidos/todos:
     get:
-      summary: /pedidos/todos
+      summary: Obtener todos los pedidos
       consumes:
         - application/json
       parameters: []
@@ -157,7 +299,7 @@ paths:
           description: OK
   '/pedidos/usuarios/editar/{id}':
     post:
-      summary: '/pedidos/usuarios/editar/{id}'
+      summary: Editar pedido por id
       consumes:
         - application/json
       parameters:
@@ -165,12 +307,36 @@ paths:
           type: integer
           in: path
           required: true
+          description: ID del pedido a editar
+        - name: pedido
+          in: body
+          description: Editar pedido
+          schema:
+            type: object
+            required:
+              - producto
+              - cantidad
+              - pago
+              - direccion
+            properties:
+              producto:
+                type: string
+                example: Fondue de queso Emmental
+              cantidad:
+                type: integer
+                example: '2'
+              pago:
+                type: string
+                example: 'Efectivo o Débito o Crédito, escoger sólo un método'
+              direccion:
+                type: string
+                example: 'Avenida Siempreviva, 103, Springfield'
       responses:
         '200':
           description: OK
   '/pedidos/usuarios/eliminar/{id}':
     delete:
-      summary: '/pedidos/usuarios/eliminar/{id}'
+      summary: Eliminar pedido según id
       consumes:
         - application/json
       parameters:
@@ -178,12 +344,13 @@ paths:
           type: integer
           in: path
           required: true
+          description: ID del pedido a eliminar
       responses:
         '200':
           description: OK
   '/pedidos/estado/{id}':
     get:
-      summary: '/pedidos/estado/{id}'
+      summary: Cambiar status del pedido por id
       consumes:
         - application/json
       parameters:
@@ -191,6 +358,7 @@ paths:
           type: integer
           in: path
           required: true
+          description: ID del pedido a cambiar de status
       responses:
         '200':
           description: OK
