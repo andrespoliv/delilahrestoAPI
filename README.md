@@ -53,15 +53,6 @@ delilahrestoAPI tiene el siguiente directorio de archivos:
 ### Uso
 Para utilizar delilahrestoAPI debe contarse con una aplicación de simulación de cliente como Postman o Eclipse, un servidor virtual como XAMPP y una aplicación del tipo MySQL como PHPmyAdmin
 
-
-Item	Cumple
-1 - Poder registrar un nuevo usuario.	Si
-2 - Un usuario debe poder listar todos los productos disponibles.	No se puede testear
-3 - Un usuario debe poder generar un nuevo pedido al Restaurante con un listado de platos que desea.	No se puede testear
-4 - El usuario con roles de administrador debe poder actualizar el estado del pedido.	No se puede testear
-5 - Un usuario con rol de administrador debe poder realizar las acciones de creación, edición y eliminación de recursos de productos (CRUD de productos).	No se puede testear
-6 - Un usuario sin roles de administrador no debe poder crear, editar o eliminar un producto, ni editar o eliminar un pedido. Tampoco debe poder acceder a informaciones de otros usuarios.	No se puede testear
-
 Una vez se cuenta con esos recursos adicionales es posible iniciar la API:
   
   a) Ejecutar node server.js desde la terminal y verificar que en la consola se imprima el mensaje del servidor y de la conexión con la base de datos
