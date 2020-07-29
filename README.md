@@ -114,7 +114,7 @@ Una vez se cuenta con esos recursos adicionales es posible iniciar la API:
   
   
   
-  j) Para funcionalidad especial de tipo admin ver los endpoints definidos en el archivo YAML
+  k) Para funcionalidad especial de tipo admin ver los endpoints definidos en el archivo YAML
   
   ###### NOTA: se debe tener la base de datos iniciada previamente en caso de usar XAMPP (esto se logra haciendo clic en start APACHE y luego START mySQL)
   
