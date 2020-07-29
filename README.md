@@ -52,8 +52,11 @@ delilahrestoAPI tiene el siguiente directorio de archivos:
 Para utilizar delilahrestoAPI debe contarse con una aplicación de simulación de cliente como Postman o Eclipse, un servidor virtual como XAMPP y una aplicación del tipo MySQL como PHPmyAdmin
 
 Una vez se cuenta con esos recursos adicionales es posible iniciar la API:
+  
   a) Ejecutar node server.js desde la terminal y verificar que en la consola se imprima el mensaje del servidor y de la conexión con la base de datos
+  
   b) Abrir POSTMAN para ejecutar cualquiera de los endpoints declarados en la documentación OpenAPI_doc.yaml
+  
   c) Crear usuario mediante el endpoint POST "/signup" llenando el body JSON del POSTMAN con los siguientes datos:
        { usuario,
         nombre,
@@ -62,14 +65,20 @@ Una vez se cuenta con esos recursos adicionales es posible iniciar la API:
         telefono,
         direccion,
         contraseña}
+  
   d) Iniciar sesión mediante el endpoint POST "/signin llevando el body JSON del POSTMAN con los siguientes datos (una vez hecho el paso anterior):
       { usuario,
         contraseña}
+  
+  NOTA: Una vez iniciada la sesión, el proceso de autorización se hará mediante el uso de la introducción del JSON Web Token dentro del header llamado "x-access-token"
+  
   e) Registrar productos dentro de la base de datos (ver endpoint POST "/nuevoproducto", se debe ser admin y estar iniciado para hacer esto). Para ello llenar el body JSON del POSTMAN con los siguientes datos:
        { nombre,
         precio,
         descripcion}
+  
   f) Si se es usuario sin privilegios (o admin), se puede observar el listado de productos mediante el endpoint GET /menu
+  
   g) Para realizar el pedido se debe ingresar en el body JSON del POSTMAN los siguientes datos a partir del endpoint POST "/pedidos/nuevo":
       {producto, 
       cantidad, 
