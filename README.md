@@ -5,7 +5,7 @@
 ### Directorio de archivos
 ### Uso
 ### Licencia
-
+#
 ### Requerimientos
 delilahrestoAPI requiere las siguintes tecnologías para funcionar: Node.js 0.10+, y los siguientes módulos provistos a través de npm (el cuál viene instalado normalmente en el node.js y puede accederse fácilmente desde la terminal): 
     
@@ -17,6 +17,7 @@ delilahrestoAPI requiere las siguintes tecnologías para funcionar: Node.js 0.10
     "mysql": "^2.18.1", Permite generar una conexión entre la API y una base de datos asociada a MySQL
     "util": "^0.12.3" Permite manejar callbacks como promesas
 
+#
 ### Directorio de archivos
 delilahrestoAPI tiene el siguiente directorio de archivos:
 
@@ -48,8 +49,18 @@ delilahrestoAPI tiene el siguiente directorio de archivos:
     ./OpenAPI_doc.yaml
       Código que contiene un modelo Open API en formato YAML de la API
 
+#
 ### Uso
 Para utilizar delilahrestoAPI debe contarse con una aplicación de simulación de cliente como Postman o Eclipse, un servidor virtual como XAMPP y una aplicación del tipo MySQL como PHPmyAdmin
+
+
+Item	Cumple
+1 - Poder registrar un nuevo usuario.	Si
+2 - Un usuario debe poder listar todos los productos disponibles.	No se puede testear
+3 - Un usuario debe poder generar un nuevo pedido al Restaurante con un listado de platos que desea.	No se puede testear
+4 - El usuario con roles de administrador debe poder actualizar el estado del pedido.	No se puede testear
+5 - Un usuario con rol de administrador debe poder realizar las acciones de creación, edición y eliminación de recursos de productos (CRUD de productos).	No se puede testear
+6 - Un usuario sin roles de administrador no debe poder crear, editar o eliminar un producto, ni editar o eliminar un pedido. Tampoco debe poder acceder a informaciones de otros usuarios.	No se puede testear
 
 Una vez se cuenta con esos recursos adicionales es posible iniciar la API:
   
@@ -70,23 +81,43 @@ Una vez se cuenta con esos recursos adicionales es posible iniciar la API:
       { usuario,
         contraseña}
   
-  NOTA: Una vez iniciada la sesión, el proceso de autorización se hará mediante el uso de la introducción del JSON Web Token dentro del header llamado "x-access-token"
+  #NOTA: Una vez iniciada la sesión, el proceso de autorización se hará mediante el uso de la introducción del JSON Web Token dentro del header llamado "x-access-token". Todo acción ejecutada dentro de la API requerirá el token, por lo que de no incluir tal header con el JWT proveniente de la respuesta tras el inicio de sesión, no se podrá continuar
   
   e) Registrar productos dentro de la base de datos (ver endpoint POST "/nuevoproducto", se debe ser admin y estar iniciado para hacer esto). Para ello llenar el body JSON del POSTMAN con los siguientes datos:
        { nombre,
         precio,
         descripcion}
   
-  f) Si se es usuario sin privilegios (o admin), se puede observar el listado de productos mediante el endpoint GET /menu
+  f) Para listar todos los productos del menú, basta con hacer un llamada mediante el endpoint GET "/menu", no se necesita ser administrador para ejecutar tal tarea
   
-  g) Para realizar el pedido se debe ingresar en el body JSON del POSTMAN los siguientes datos a partir del endpoint POST "/pedidos/nuevo":
+  g) Si se es usuario sin privilegios (o admin), se puede observar el listado de productos mediante el endpoint GET /menu
+  
+  h) Para realizar el pedido se debe ingresar en el body JSON del POSTMAN los siguientes datos a partir del endpoint POST "/pedidos/nuevo":
       {producto, 
       cantidad, 
       pago}
   
-  h) Para funcionalidad especial de tipo admin ver los endpoints definidos en el archivo YAML
+  i) Para actualizar el estado del pedido sólo debe hacerse uso del endpoint "/pedidos/estado/:id" con el id del pedido a modificar
+  
+  j) Para propiedades adicionales del CRUD de productos, usar respectivamente los siguientes endpoints para editar y eliminar
+  
+  
+  POST "/editar/:id": con los siguientes datos en el body
+  
+  {
+        nombre,
+        precio,
+        descripcion
+  }
+  
+  DELETE "/eliminarproducto/:id" con el id del producto a eliminar
+  
+  
+  
+  j) Para funcionalidad especial de tipo admin ver los endpoints definidos en el archivo YAML
   
   ###### NOTA: se debe tener la base de datos iniciada previamente en caso de usar XAMPP (esto se logra haciendo clic en start APACHE y luego START mySQL)
   
+#
 ### Licencia
 Esta API no posee ninguna licencia actualmente por lo que su uso, modificación y remoción es totalmente legal por los momentos.
