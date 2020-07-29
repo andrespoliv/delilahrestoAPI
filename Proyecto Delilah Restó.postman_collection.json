@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "9088f17d-02df-4b3b-aaaf-da7077a4fd75",
+		"name": "Proyecto Delilah Restó",
+		"description": "Ejemplos de pruebas durante fase de desarrollo.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\": \"andrespoliv\",\r\n    \"nombre\": \"Andres\",\r\n    \"apellido\": \"Peña\",\r\n    \"email\": \"andrespoliv@gmail.com\",\r\n    \"telefono\": \"555\",\r\n    \"direccion\": \"Calle 2-A\",\r\n    \"contraseña\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"signup"
+					]
+				},
+				"description": "Prueba de registro de usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk1OTk1OTgzLCJleHAiOjE1OTYwODIzODN9.mxUWi-tenEn4insj_VbFEHN8cGgC0MVyiSxV-0Eo1Ww",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\": \"andrespoliv\",\r\n    \"contraseña\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"signin"
+					]
+				},
+				"description": "Prueba de inicio de sesión en desarrollo"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear producto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk1OTk1OTgzLCJleHAiOjE1OTYwODIzODN9.mxUWi-tenEn4insj_VbFEHN8cGgC0MVyiSxV-0Eo1Ww",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Pollo asado\",\r\n    \"precio\":\"2500\",\r\n    \"descripcion\":\"Trutro de pollo asado con acompañante a elección\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/nuevoproducto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"nuevoproducto"
+					]
+				},
+				"description": "Creación de producto con autenticación por roles y autorización"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear pedido",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk1OTk1OTgzLCJleHAiOjE1OTYwODIzODN9.mxUWi-tenEn4insj_VbFEHN8cGgC0MVyiSxV-0Eo1Ww",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"producto\":\"Pollo asado\",\r\n    \"cantidad\":\"2\",\r\n    \"pago\": \"Débito\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pedidos/nuevo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"nuevo"
+					]
+				},
+				"description": "Creación de pedido en pruebas de desarrollo"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar estatus",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTk1OTk1OTgzLCJleHAiOjE1OTYwODIzODN9.mxUWi-tenEn4insj_VbFEHN8cGgC0MVyiSxV-0Eo1Ww",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/pedidos/estado/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"estado",
+						"1"
+					]
+				},
+				"description": "Cambiar el estado del pedido prueba en desarrollo"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

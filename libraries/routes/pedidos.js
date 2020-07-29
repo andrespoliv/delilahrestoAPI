@@ -3,7 +3,7 @@ const pedController = require("../controllers/pedController");
 
 module.exports = function(server){
 
-    server.post("/pedidos/nuevo", pedController.agregarPedido);
+    server.post("/pedidos/nuevo", authJWT.verifyToken, pedController.agregarPedido);
 
     server.get("/pedidos/usuario/:id", authJWT.verifyToken, pedController.misPedidos);
 
